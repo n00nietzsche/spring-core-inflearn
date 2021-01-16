@@ -2,6 +2,9 @@ package hello.core.member;
 
 public class MemberServiceImpl implements MemberService {
 
+    /*
+    이 부분에서 `MemberService`가 추상화에도 의존하고, 구체화에도 의존하고 있음
+     */
     private final MemberRepository memberRepository = new MemoryMemberRepository();
 
     @Override
@@ -10,7 +13,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member findMEmber(Long memberId) {
+    public Member findMember(Long memberId) {
         return memberRepository.findById(memberId);
     }
 }
