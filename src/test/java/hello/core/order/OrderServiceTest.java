@@ -1,21 +1,34 @@
 package hello.core.order;
 
-import hello.core.member.Grade;
-import hello.core.member.Member;
-import hello.core.member.MemberService;
-import hello.core.member.MemberServiceImpl;
+import hello.core.AppConfig;
+import hello.core.discount.FixDiscountPolicy;
+import hello.core.member.*;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderServiceTest {
+    MemberService memberService;
+    OrderService orderService;
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    /*
+    매번 같은 환경에서 테스트가 돌아감을 보장해주기 위해
+    DB를 이용한 테스트에서 `@Transactional`을 이용하는 것과 같음
+     */
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
+
 
     /* 스프링 컨테이너를 이용한 테스트 말고, 이러한 단위테스트를 잘 만들어야 한다. */
     @Test
+    @DisplayName("주문 및 가격 확인")
     public void OrderAppTest() {
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
