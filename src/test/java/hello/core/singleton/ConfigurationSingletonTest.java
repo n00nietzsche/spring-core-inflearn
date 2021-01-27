@@ -41,11 +41,13 @@ public class ConfigurationSingletonTest {
         /*
         `@Configuration`인 클래스인 `AppConfig.class`를 넘기면
         `AppConfig` 마저도 `Bean`이 된다.
+        `AppConfig` `Bean`을 출력해보자.
          */
         ApplicationContext applicationContext
                 = new AnnotationConfigApplicationContext(AppConfig.class);
 
         AppConfig bean = applicationContext.getBean(AppConfig.class);
         System.out.println("bean = " + bean.getClass());
+        // 출력: bean = class hello.core.AppConfig$$EnhancerBySpringCGLIB$$11a0e339
     }
 }

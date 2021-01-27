@@ -33,11 +33,11 @@ public class AppConfig {
 
     /*
     예상 출력
-call AppConfig.memberRepository
-call AppConfig.memberService
-call AppConfig.memberRepository
-call AppConfig.orderService
-call AppConfig.memberRepository
+    call AppConfig.memberRepository
+    call AppConfig.memberService
+    call AppConfig.memberRepository
+    call AppConfig.orderService
+    call AppConfig.memberRepository
 
     `memberRepository`가 3번 호출될 것이라 예상함.
 
