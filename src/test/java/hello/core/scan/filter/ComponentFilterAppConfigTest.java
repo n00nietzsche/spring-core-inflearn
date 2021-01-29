@@ -29,7 +29,10 @@ public class ComponentFilterAppConfigTest {
     @ComponentScan(
             // `type=FilterType.ANNOTATION`은 기본 값이라 사실 생략해도 잘 동작한다.
             includeFilters = @Filter(type= FilterType.ANNOTATION, classes = MyIncludeComponent.class)
-            , excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
+            , excludeFilters = {
+                    @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
+                    , @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = BeanA.class)
+            }
     )
     static class ComponentFilterAppConfig {
 
