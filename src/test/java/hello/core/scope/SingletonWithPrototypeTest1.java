@@ -46,7 +46,7 @@ public class SingletonWithPrototypeTest1 {
     static class ClientBean {
         private final PrototypeBean prototypeBean;
 
-        @Autowired
+        @Autowired // 싱글톤 빈에 의존성으로 프토토타입 빈을 넣어주었음
         public ClientBean(PrototypeBean prototypeBean) {
             this.prototypeBean = prototypeBean;
         }
